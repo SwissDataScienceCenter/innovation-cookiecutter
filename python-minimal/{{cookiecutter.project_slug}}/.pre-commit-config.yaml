@@ -20,10 +20,5 @@ repos:
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.12.3
   hooks:
-    - id: ruff
-      types_or: [ python, pyi, jupyter ]
-      args: [ --exit-zero ]
-      verbose: true
     - id: ruff-format
-      types_or: [ python, pyi, jupyter ]
 {%- endif %}
