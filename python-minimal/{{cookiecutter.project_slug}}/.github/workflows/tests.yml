@@ -24,11 +24,17 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt pytest
-{%- if cookiecutter.use_ruff %}
+{%- if cookiecutter.use_ruff_format %}
 
-    - name: Check with ruff
+    - name: Check format with ruff
       run: |
-        ruff format --check .
+        ruff format --check
+{%- endif %}
+{%- if cookiecutter.use_ruff_lint %}
+
+    - name: Check code linting with ruff
+      run: |
+        ruff check
 {%- endif %}
 {%- if cookiecutter.use_pytest %}
 

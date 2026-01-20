@@ -7,8 +7,11 @@ run-tests:
   before_script:
   - pip install -r requirements.txt pytest
   script:
-{%- if cookiecutter.use_ruff %}
+{%- if cookiecutter.use_ruff_format %}
   - ruff format --check
+{%- endif %}
+{%- if cookiecutter.use_ruff_lint %}
+  - ruff check
 {%- endif %}
 {%- if cookiecutter.use_pytest %}
   - pytest -v

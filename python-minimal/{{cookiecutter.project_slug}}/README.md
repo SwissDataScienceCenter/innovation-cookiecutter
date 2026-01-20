@@ -6,7 +6,7 @@ Next steps include:
  - [x] Create project from the Cookiecutter template.
  - [ ] Create a virtual environment to work in an isolated Python installation.
  - [ ] Install [pre-commit](https://pre-commit.com/) hooks.
-{%- if cookiecutter.use_ruff or cookiecutter.use_pytest %}
+{%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint or cookiecutter.use_pytest %}
  - [ ] Keep either `.gitlab-ci.yml` or `.github`, according to your Git hosting platform.
 {%- endif %}
  - [ ] Update `authors` and `description`, in `pyproject.toml`.

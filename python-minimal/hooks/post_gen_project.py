@@ -14,7 +14,7 @@ REMOVED_PATHS = [
     # {% if not cookiecutter.use_pytest %}
     "tests",
     # {% endif %}
-    # {% if not cookiecutter.use_ruff and not cookiecutter.use_pytest %}
+    # {% if not cookiecutter.use_ruff_format and not cookiecutter.use_ruff_lint and not cookiecutter.use_pytest %}
     ".github",
     ".gitlab-ci.yml",
     # {% endif %}
