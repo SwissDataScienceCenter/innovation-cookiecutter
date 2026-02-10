@@ -5,12 +5,14 @@
     "use_ruff_format": true,
     "use_ruff_lint": true,
     "use_pytest": true,
+    "use_uv": true,
     "__prompts__": {
-        "project_name": "Project name, human-readable",
+        "project_name": "Project name, Title Case",
         "project_slug": "Repository name, kebab-case",
-        "module_name": "Python module name, snake-case",
+        "module_name": "Python module name, snake_case",
         "use_ruff_format": "Enable code formatting, using Ruff",
         "use_ruff_lint": "Enable code linting, using Ruff",
-        "use_pytest": "Enable unit testing, using pytest"
+        "use_pytest": "Enable unit testing, using pytest",
+        "use_uv": "Use uv instead of pip"
     }
 }

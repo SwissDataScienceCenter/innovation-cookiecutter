@@ -14,10 +14,20 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     # TODO configure install dependencies
-    # "numpy~=2.0",
-    # "pandas~=2.0",
 ]
 dynamic = ["version"]
+
+[dependency-groups]
+dev = [
+    "notebook~=7.4",
+    "pre-commit~=4.2",
+{%- if cookiecutter.use_pytest %}
+    "pytest~=8.4",
+{%- endif %}
+{%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint %}
+    "ruff==0.12.3",
+{%- endif %}
+]
 
 [tool.setuptools.dynamic]
 version = {attr = "{{ cookiecutter.module_name }}.__version__"}

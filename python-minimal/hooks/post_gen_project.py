@@ -18,6 +18,9 @@ REMOVED_PATHS = [
     ".github",
     ".gitlab-ci.yml",
     # {% endif %}
+    # {% if not cookiecutter.use_uv %}
+    "uv.lock",
+    # {% endif %}
 ]
 
 
