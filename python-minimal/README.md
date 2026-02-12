@@ -4,8 +4,7 @@ This template is designed for simple data science project in Python.
 It suggests a combination of notebooks and a module for shared utilities.
 Development tools are kept to a minimum.
 
-Python 3.10 is chosen as a minimum, as 3.9 will reach end-of-life in 2025 (cf. [Python Release Cycle](https://devguide.python.org/versions/#python-release-cycle)).
-We recommend 3.11, as some packages may not fully support 3.12 yet.
+Python 3.12 is chosen as a minimum, as 3.11 will reach end-of-life in 2027 (cf. [Python Release Cycle](https://devguide.python.org/versions/#python-release-cycle)).
 
 
 ## Dependencies and reproducibility

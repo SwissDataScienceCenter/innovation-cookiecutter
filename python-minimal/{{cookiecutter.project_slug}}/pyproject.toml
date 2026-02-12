@@ -11,7 +11,7 @@ authors = [
 ]
 description = ""
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = "~={{ cookiecutter.__python_version }}"
 dependencies = [
     # TODO configure install dependencies
 ]
@@ -19,13 +19,13 @@ dynamic = ["version"]
 
 [dependency-groups]
 dev = [
-    "notebook~=7.4",
-    "pre-commit~=4.2",
+    "notebook~={{ cookiecutter.__notebook_version }}",
+    "pre-commit~={{ cookiecutter.__pre_commit_version }}",
 {%- if cookiecutter.use_pytest %}
-    "pytest~=8.4",
+    "pytest~={{ cookiecutter.__pytest_version }}",
 {%- endif %}
 {%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint %}
-    "ruff==0.12.3",
+    "ruff=={{ cookiecutter.__ruff_version }}",
 {%- endif %}
 ]
 
@@ -34,7 +34,7 @@ version = {attr = "{{ cookiecutter.module_name }}.__version__"}
 {%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint %}
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py{{ cookiecutter.__python_version.replace(".", "") }}"
 line-length = 88
 {%- if cookiecutter.use_ruff_lint %}
 

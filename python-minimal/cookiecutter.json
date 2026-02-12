@@ -1,4 +1,10 @@
 {
+    "__python_version": "3.12",
+    "__uv_version": "0.10.2",
+    "__pre_commit_version": "4.5",
+    "__ruff_version": "0.15.0",
+    "__pytest_version": "9.0",
+    "__notebook_version": "7.5",
     "project_name": "Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
     "module_name": "{{ cookiecutter.project_slug.replace('-', '_') }}",

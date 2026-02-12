@@ -17,7 +17,7 @@ repos:
   - id: trailing-whitespace
 {%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint %}
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.12.3
+  rev: v{{ cookiecutter.__ruff_version }}
   hooks:
 {%- if cookiecutter.use_ruff_lint %}
     - id: ruff-check
@@ -29,7 +29,7 @@ repos:
 {%- endif %}
 {%- if cookiecutter.use_uv %}
 - repo: https://github.com/astral-sh/uv-pre-commit
-  rev: 0.9.26
+  rev: {{ cookiecutter.__uv_version }}
   hooks:
     - id: uv-lock
     - id: uv-export
@@ -41,7 +41,7 @@ repos:
     entry: uv pip compile pyproject.toml --group dev --universal --output-file requirements.txt --quiet --no-progress
     language: python
     additional_dependencies:
-    - uv==0.9.26
+    - uv=={{ cookiecutter.__uv_version }}
     pass_filenames: false
     files: ^pyproject\.toml$
 {%- endif %}

@@ -3,9 +3,9 @@ stages:
 
 run-tests:
   stage: test
-  image: python:3.10
+  image: python:{{ cookiecutter.__python_version }}
   before_script:
-  - pip install -r requirements.txt . pytest
+  - pip install -r requirements.txt .
   script:
 {%- if cookiecutter.use_ruff_format %}
   - ruff format --check
