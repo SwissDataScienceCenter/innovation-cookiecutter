@@ -11,7 +11,7 @@ authors = [
 ]
 description = ""
 readme = "README.md"
-requires-python = "~={{ cookiecutter.__python_version }}"
+requires-python = "~={{ cookiecutter.__python_version }}.0"
 dependencies = [
     # TODO configure install dependencies
 ]

@@ -10,6 +10,11 @@ jobs:
     strategy:
       matrix:
         python-version: ["{{ cookiecutter.__python_version }}"]
+    env:
+      PIP_ROOT_USER_ACTION: ignore
+{%- if cookiecutter.use_uv %}
+      UV_LINK_MODE: copy
+{%- endif %}
 
     steps:
 
@@ -23,22 +28,39 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+{%- if cookiecutter.use_uv %}
+        pip install uv
+        uv sync --locked
+{%- else %}
         pip install -r requirements.txt .
+{%- endif %}
 {%- if cookiecutter.use_ruff_format %}
 
     - name: Check format with ruff
       run: |
+{%- if cookiecutter.use_uv %}
+        uv run ruff format --check
+{%- else %}
         ruff format --check
+{%- endif %}
 {%- endif %}
 {%- if cookiecutter.use_ruff_lint %}
 
     - name: Check code linting with ruff
       run: |
+{%- if cookiecutter.use_uv %}
+        uv run ruff check
+{%- else %}
         ruff check
+{%- endif %}
 {%- endif %}
 {%- if cookiecutter.use_pytest %}
 
     - name: Test with pytest
       run: |
+{%- if cookiecutter.use_uv %}
+        uv run pytest -v
+{%- else %}
         pytest -v
+{%- endif %}
 {%- endif %}
