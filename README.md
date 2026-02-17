@@ -17,7 +17,7 @@ Then, create a project based on a template.
 The interactive command line tool will guide you through the selection and configuration of the template.
 
 ```
-cookiecutter https://github.com/sdsc-innovation/cookiecutter-python.git
+cookiecutter https://github.com/SwissDataScienceCenter/innovation-cookiecutter.git
 ```
 
 You can now create an empty repository on GitHub or GitLab (i.e., without an initial README file), and initialize it locally:

@@ -1,6 +1,6 @@
 # {{ cookiecutter.project_name }}
 
-This project is made using [this template](https://github.com/sdsc-innovation/cookiecutter-python).
+This project is made using [this template](https://github.com/SwissDataScienceCenter/innovation-cookiecutter).
 Next steps include:
 
  - [x] Create project from the Cookiecutter template.
