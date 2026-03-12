@@ -33,6 +33,7 @@ repos:
   hooks:
     - id: uv-lock
     - id: uv-export
+      args: ["--frozen", "--no-emit-project", "--output-file=requirements.txt", "--quiet"]
 {%- else %}
 - repo: local
   hooks:
