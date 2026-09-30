@@ -12,6 +12,7 @@
     "use_ruff_format": true,
     "use_ruff_lint": true,
     "use_pytest": true,
+    "use_nbstripout": true,
     "use_uv": true,
     "ci_platform": ["gitlab", "github", "none"],
     "__prompts__": {
@@ -21,6 +22,7 @@
         "use_ruff_format": "Enable code formatting, using Ruff",
         "use_ruff_lint": "Enable code linting, using Ruff",
         "use_pytest": "Enable unit testing, using pytest",
+        "use_nbstripout": "Strip notebook outputs on commit, using nbstripout",
         "use_uv": "Use uv instead of pip",
         "ci_platform": {
             "__prompt__": "Continuous integration platform",

@@ -71,7 +71,7 @@ Ruff also cover this point to some extent, replacing efficiently [Pylint](https:
 Static analysis also benefits from type hints, as type checkers (e.g. [mypy](https://mypy-lang.org/), [pyright](https://microsoft.github.io/pyright/)) will check their validity and help spot issues in the code.
 No type checker is configured by default, to keep the template lean; mypy and pyright are stable choices, while [ty](https://docs.astral.sh/ty/) is a fast alternative that is still in beta (pin it exactly if used).
 
-Notebook outputs are stripped by [nbstripout](https://github.com/kynan/nbstripout), to keep diffs small and avoid committing data by accident.
+By default, notebook outputs are stripped by [nbstripout](https://github.com/kynan/nbstripout), to keep diffs small and avoid committing data by accident.
 It runs as a pre-commit hook for convenience, which also clears outputs in the working copy.
 To keep them locally, nbstripout can instead be installed as a [Git filter](https://github.com/kynan/nbstripout#using-as-a-git-filter).
 
