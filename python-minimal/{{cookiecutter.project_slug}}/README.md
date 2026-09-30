@@ -5,7 +5,7 @@ Next steps include:
 
  - [x] Create project from the Cookiecutter template.
  - [ ] Create a virtual environment to work in an isolated Python installation.
- - [ ] Install [pre-commit](https://pre-commit.com/) hooks.
+ - [ ] Install [pre-commit](https://pre-commit.com/) hooks, and run them once to generate the lock files, before the first push.
 {%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint or cookiecutter.use_pytest %}
  - [ ] Keep either [`.gitlab-ci.yml`](https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html) or [`.github/`](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python), according to your Git hosting platform.
 {%- endif %}

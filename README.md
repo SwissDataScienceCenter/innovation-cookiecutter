@@ -29,8 +29,14 @@ cd your-project
 git init --initial-branch=main
 git remote add origin https://github.com/you/your-project.git
 git add .
+```
+
+Before the first commit, install dependencies and register pre-commit hooks, as described in the generated `README.md`.
+Running the hooks once (`pre-commit run --all-files`) generates the lock files, which the CI/CD pipeline relies on.
+Then, commit and push:
+
+```sh
+git add .
 git commit -m "Initial commit"
 git push --set-upstream origin main
 ```
-
-Please refer to the generated `README.md` for more details, in particular to install dependencies and register pre-commit hooks.
