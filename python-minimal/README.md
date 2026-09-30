@@ -4,7 +4,8 @@ This template is designed for simple data science project in Python.
 It suggests a combination of notebooks and a module for shared utilities.
 Development tools are kept to a minimum.
 
-Python 3.12 is chosen as a minimum, as 3.11 will reach end-of-life in 2027 (cf. [Python Release Cycle](https://devguide.python.org/versions/#python-release-cycle)).
+Python 3.14 (the latest stable release) is used, and pinned to a single minor version, for consistency within a project.
+Newer Python versions are not guaranteed to work until they are explicitly tested; it is the responsibility of the maintainers to update this constraint (cf. [Python Release Cycle](https://devguide.python.org/versions/#python-release-cycle)).
 
 
 ## Dependencies and reproducibility
@@ -17,14 +18,14 @@ Dependencies used in a project are divided into these standardized fields:
 
  * `project.dependencies`: these represent the core runtime dependencies, that should be included in any installation of the project. They get installed with `pip install my-project` by default.
  * `project.optional-dependencies`: these extra dependencies are optional, often for opt-in installable features, installed using `pip install my-project[feature]`.
- * `dependency-groups` ([PEP 735](https://peps.python.org/pep-0735/)): these development dependencies are not included as part of the distributed package, and need to be explicitly using `pip install --group dev`.
+ * `dependency-groups` ([PEP 735](https://peps.python.org/pep-0735/)): these development dependencies are not included as part of the distributed package, and need to be explicitly installed using `pip install --group dev`.
 
 Dependencies versions (cf. [semantic versioning](https://packaging.python.org/en/latest/discussions/versioning/)) should usually be as broad as possible, to reduce the incompatibility with other libraries and tools.
 While there is no automated way to infer the largest range that still works for a project, a few rules can be applied:
 
  1. Only specify direct dependencies, often the ones that are imported explicitly in the code. Exceptions include, for instance, `openpyxl` to read Excel files using Pandas, which is usually not explicitly imported.
  2. Always constrain the major version, as libraries are usually introducing breaking changes. For unstable libraries (i.e., before version 1.0), treat minor version changes as breaking as well.
- 3. Start simple, using the tilde operator, such as `"pandas~=2.1"` and `"ruff~=0.12.3"`, which are equivalent to `"pandas>=2.1; pandas<3"` and `"ruff>=0.12.3; ruff<0.13"`, respectively.
+ 3. Start simple, using the tilde operator, such as `"pandas~=2.1"` and `"ruff~=0.16.9"`, which are equivalent to `"pandas>=2.1,<3"` and `"ruff>=0.16.9,<0.17"`, respectively.
  4. Try to lower the constraint later on. For instance, if a project only uses a few functions from `scipy`, check the documentation to see when they were introduced.
 
 For reproducibility, keep a pinned (locked) record of *exact* versions used during development.
@@ -53,7 +54,7 @@ Two main reasons are often discussed when promoting the use of tools during deve
  * **Consistency**: ensuring the same workflow and conventions across a project or team ease collaboration, by promoting a standardized style and avoiding surprises.
  * **Automation**: many simple fixes and verifications can be automatically applied, avoiding manual operations.
 
-In both cases, the core objective is to reduce the mental workload on the developper.
+In both cases, the core objective is to reduce the mental workload on the developer.
 This is why using a combination of properly configured tools is crucial for productivity and quality:
 
  1. The IDE (e.g. VSCode, PyCharm) is the typical user interface when writing code. Enabling tools during development is key.
@@ -68,6 +69,7 @@ Another family of tools include static analysis, inspecting the codebase without
 Ruff also cover this point to some extent, replacing efficiently [Pylint](https://pylint.pycqa.org/en/latest/index.html), [Flake8](https://flake8.pycqa.org/en/latest/index.html), and [isort](https://pycqa.github.io/isort/).
 
 Static analysis also benefits from type hints, as type checkers (e.g. [mypy](https://mypy-lang.org/), [pyright](https://microsoft.github.io/pyright/)) will check their validity and help spot issues in the code.
+No type checker is configured by default, to keep the template lean; mypy and pyright are stable choices, while [ty](https://docs.astral.sh/ty/) is a fast alternative that is still in beta (pin it exactly if used).
 
 
 ## Packaging tools

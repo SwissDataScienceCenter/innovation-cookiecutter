@@ -5,7 +5,7 @@ Next steps include:
 
  - [x] Create project from the Cookiecutter template.
  - [ ] Create a virtual environment to work in an isolated Python installation.
- - [ ] Install [pre-commit](https://pre-commit.com/) hooks.
+ - [ ] Install [pre-commit](https://pre-commit.com/) hooks, and run them once to generate the lock files, before the first push.
 {%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint or cookiecutter.use_pytest %}
  - [ ] Keep either [`.gitlab-ci.yml`](https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html) or [`.github/`](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python), according to your Git hosting platform.
 {%- endif %}
@@ -17,18 +17,6 @@ Next steps include:
 
 
 ## Getting started
-
-In order to use [pre-commit](https://pre-commit.com/) hooks, they need to be registered:
-
-```sh
-pre-commit install
-```
-
-It is a good practice to manually invoke hooks after installation, just in case:
-
-```sh
-pre-commit run --all-files
-```
 
 During development, install pinned dependencies in your virtual environment, including the module itself in [editable mode](https://setuptools.pypa.io/en/latest/userguide/development_mode.html), using:
 {%- if cookiecutter.use_uv %}
@@ -42,6 +30,32 @@ uv sync
 pip install -r requirements.txt -e . --group dev
 ```
 {%- endif %}
+
+In order to use [pre-commit](https://pre-commit.com/) hooks, they need to be registered:
+{%- if cookiecutter.use_uv %}
+
+```sh
+uv run pre-commit install
+```
+{%- else %}
+
+```sh
+pre-commit install
+```
+{%- endif %}
+
+It is a good practice to manually invoke hooks after installation, just in case:
+{%- if cookiecutter.use_uv %}
+
+```sh
+uv run pre-commit run --all-files
+```
+{%- else %}
+
+```sh
+pre-commit run --all-files
+```
+{%- endif %}
 {%- if cookiecutter.use_uv %}
 
 New dependencies can be added using [`uv add`](https://docs.astral.sh/uv/concepts/projects/dependencies/) (or `uv add --dev` for development dependencies), or by manually configuring `pyproject.toml` and using [`uv lock && uv sync`](https://docs.astral.sh/uv/concepts/projects/sync/).
@@ -52,8 +66,15 @@ New dependencies can be specified directly in `pyproject.toml`; `requirements.tx
 {%- if cookiecutter.use_pytest %}
 
 Unit tests (using [pytest](https://pytest.org/)) are not executed as a pre-commit hook, to keep the overhead to a minimum. Instead, a CI/CD pipeline is configured to run tests after each commit. You can also execute them locally, manually:
+{%- if cookiecutter.use_uv %}
+
+```sh
+uv run pytest
+```
+{%- else %}
 
 ```sh
 pytest
 ```
+{%- endif %}
 {%- endif %}

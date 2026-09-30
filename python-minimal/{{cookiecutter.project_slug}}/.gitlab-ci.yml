@@ -12,7 +12,7 @@ run-tests:
   before_script:
   - python -m pip install --upgrade pip
 {%- if cookiecutter.use_uv %}
-  - pip install uv
+  - pip install uv=={{ cookiecutter.__uv_version }}
   - uv sync --locked
 {%- else %}
   - pip install -r requirements.txt .
