@@ -15,6 +15,11 @@ repos:
   - id: destroyed-symlinks
   - id: end-of-file-fixer
   - id: trailing-whitespace
+- repo: https://github.com/kynan/nbstripout
+  rev: {{ cookiecutter.__nbstripout_version }}
+  hooks:
+  - id: nbstripout
+    args: ["--drop-empty-cells", "--keep-id", "--extra-keys=metadata.kernelspec metadata.language_info.version"]
 {%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint %}
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v{{ cookiecutter.__ruff_version }}
