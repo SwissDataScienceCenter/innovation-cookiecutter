@@ -1,6 +1,6 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: v6.0.0
   hooks:
   - id: check-added-large-files
     args: ["--maxkb=2000"]
@@ -33,6 +33,7 @@ repos:
   hooks:
     - id: uv-lock
     - id: uv-export
+      files: ^(uv\.lock|pyproject\.toml)$
       args: ["--frozen", "--no-emit-project", "--output-file=requirements.txt", "--quiet"]
 {%- else %}
 - repo: local

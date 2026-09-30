@@ -19,7 +19,7 @@ dynamic = ["version"]
 
 [dependency-groups]
 dev = [
-    "notebook~={{ cookiecutter.__notebook_version }}",
+    "ipykernel~={{ cookiecutter.__ipykernel_version }}",
     "pre-commit~={{ cookiecutter.__pre_commit_version }}",
 {%- if cookiecutter.use_pytest %}
     "pytest~={{ cookiecutter.__pytest_version }}",
