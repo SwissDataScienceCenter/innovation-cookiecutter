@@ -46,7 +46,7 @@ line-length = 88
 {%- if cookiecutter.use_ruff_lint %}
 
 [tool.ruff.lint]
-extend-select = ["B", "I", "RUF1", "UP", "W"]
+select = ["E4", "E7", "E9", "F", "B", "I", "RUF1", "UP", "W"]
 
 [tool.ruff.lint.isort]
 lines-after-imports = 2
