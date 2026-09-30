@@ -18,18 +18,6 @@ Next steps include:
 
 ## Getting started
 
-In order to use [pre-commit](https://pre-commit.com/) hooks, they need to be registered:
-
-```sh
-pre-commit install
-```
-
-It is a good practice to manually invoke hooks after installation, just in case:
-
-```sh
-pre-commit run --all-files
-```
-
 During development, install pinned dependencies in your virtual environment, including the module itself in [editable mode](https://setuptools.pypa.io/en/latest/userguide/development_mode.html), using:
 {%- if cookiecutter.use_uv %}
 
@@ -40,6 +28,32 @@ uv sync
 
 ```sh
 pip install -r requirements.txt -e . --group dev
+```
+{%- endif %}
+
+In order to use [pre-commit](https://pre-commit.com/) hooks, they need to be registered:
+{%- if cookiecutter.use_uv %}
+
+```sh
+uv run pre-commit install
+```
+{%- else %}
+
+```sh
+pre-commit install
+```
+{%- endif %}
+
+It is a good practice to manually invoke hooks after installation, just in case:
+{%- if cookiecutter.use_uv %}
+
+```sh
+uv run pre-commit run --all-files
+```
+{%- else %}
+
+```sh
+pre-commit run --all-files
 ```
 {%- endif %}
 {%- if cookiecutter.use_uv %}
@@ -62,4 +76,5 @@ uv run pytest
 ```sh
 pytest
 ```
+{%- endif %}
 {%- endif %}
