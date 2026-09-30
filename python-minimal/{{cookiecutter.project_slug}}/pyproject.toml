@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
 
 [project]
 name = "{{ cookiecutter.module_name }}"
@@ -29,8 +29,8 @@ dev = [
 {%- endif %}
 ]
 
-[tool.setuptools.dynamic]
-version = {attr = "{{ cookiecutter.module_name }}.__version__"}
+[tool.hatch.version]
+path = "src/{{ cookiecutter.module_name }}/__init__.py"
 {%- if cookiecutter.use_pytest %}
 
 [tool.pytest]
