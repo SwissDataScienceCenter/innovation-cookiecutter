@@ -31,6 +31,13 @@ dev = [
 
 [tool.setuptools.dynamic]
 version = {attr = "{{ cookiecutter.module_name }}.__version__"}
+{%- if cookiecutter.use_pytest %}
+
+[tool.pytest]
+testpaths = ["tests"]
+addopts = ["--import-mode=importlib"]
+strict = true
+{%- endif %}
 {%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint %}
 
 [tool.ruff]

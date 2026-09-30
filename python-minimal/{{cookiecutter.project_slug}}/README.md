@@ -52,6 +52,12 @@ New dependencies can be specified directly in `pyproject.toml`; `requirements.tx
 {%- if cookiecutter.use_pytest %}
 
 Unit tests (using [pytest](https://pytest.org/)) are not executed as a pre-commit hook, to keep the overhead to a minimum. Instead, a CI/CD pipeline is configured to run tests after each commit. You can also execute them locally, manually:
+{%- if cookiecutter.use_uv %}
+
+```sh
+uv run pytest
+```
+{%- else %}
 
 ```sh
 pytest
