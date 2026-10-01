@@ -6,9 +6,6 @@ Next steps include:
  - [x] Create project from the Cookiecutter template.
  - [ ] Create a virtual environment to work in an isolated Python installation.
  - [ ] Install [pre-commit](https://pre-commit.com/) hooks, and run them once to generate the lock files, before the first push.
-{%- if cookiecutter.use_ruff_format or cookiecutter.use_ruff_lint or cookiecutter.use_pytest %}
- - [ ] Keep either [`.gitlab-ci.yml`](https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html) or [`.github/`](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python), according to your Git hosting platform.
-{%- endif %}
  - [ ] Update `authors` and `description`, in `pyproject.toml`.
  - [ ] Add development and installation dependencies in `pyproject.toml`, with permissive version constraints.
  - [ ] Add a `LICENSE` file, if applicable. This is *highly recommended* if the project is open source.
@@ -65,7 +62,13 @@ New dependencies can be specified directly in `pyproject.toml`; `requirements.tx
 {%- endif %}
 {%- if cookiecutter.use_pytest %}
 
-Unit tests (using [pytest](https://pytest.org/)) are not executed as a pre-commit hook, to keep the overhead to a minimum. Instead, a CI/CD pipeline is configured to run tests after each commit. You can also execute them locally, manually:
+Unit tests (using [pytest](https://pytest.org/)) are not executed as a pre-commit hook, to keep the overhead to a minimum.
+{%- if cookiecutter.ci_platform != 'none' %}
+Instead, a CI/CD pipeline is configured to run tests after each commit.
+You can also execute them locally, manually:
+{%- else %}
+Instead, execute them locally, manually:
+{%- endif %}
 {%- if cookiecutter.use_uv %}
 
 ```sh
