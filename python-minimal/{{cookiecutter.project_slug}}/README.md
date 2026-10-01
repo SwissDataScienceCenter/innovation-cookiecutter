@@ -18,7 +18,7 @@ Next steps include:
 
 ## Getting started
 
-During development, install pinned dependencies in your virtual environment, including the module itself in [editable mode](https://setuptools.pypa.io/en/latest/userguide/development_mode.html), using:
+During development, install pinned dependencies in your virtual environment, including the module itself in [editable mode](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs), using:
 {%- if cookiecutter.use_uv %}
 
 ```sh

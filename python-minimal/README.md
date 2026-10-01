@@ -74,17 +74,19 @@ No type checker is configured by default, to keep the template lean; mypy and py
 
 ## Packaging tools
 
-During development, it is common practice to install the current module in [editable mode](https://setuptools.pypa.io/en/latest/userguide/development_mode.html).
+During development, it is common practice to install the current module in [editable mode](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs).
 The [`src` layout](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/) is often used to enforce this practice.
 The main advantage is to avoid reliance on the current working directory (e.g. through manual updates using `sys.path.append`; a fragile approach) by installing it in the virtual environment.
 
 As discussed above, `pyproject.toml` is the modern approach to project configuration, which includes the packaging of a module.
 The exact definition depends on the [build system](https://pip.pypa.io/en/stable/reference/build-system/) used.
-[PyPA](https://www.pypa.io/en/latest/)'s [Setuptools](https://setuptools.pypa.io/en/latest/) is proposed as build backend, as this is historically the most common solution.
-However, other options are discussed in [Python Packaging User Guide](https://packaging.python.org/en/latest/), such as [Hatch](https://hatch.pypa.io/latest/) or [`uv`](https://docs.astral.sh/uv/concepts/build-backend/).
+[PyPA](https://www.pypa.io/en/latest/)'s [Hatchling](https://hatch.pypa.io/latest/config/build/) is proposed as build backend, as it is the default choice of the [Python Packaging User Guide](https://packaging.python.org/en/latest/tutorials/packaging-projects/#choosing-a-build-backend).
+It works identically with `pip` and `uv`, and reads the version dynamically from `__version__` in the module (cf. [`tool.hatch.version`](https://hatch.pypa.io/latest/version/)).
 
-For most cases, this is a replacement for `setup.py`.
-However, `setup.py` is not being [deprecated](https://packaging.python.org/en/latest/discussions/setup-py-deprecated/) as [C extensions](https://setuptools.pypa.io/en/latest/userguide/ext_modules.html) still require this file.
+Other options are available, among which:
+
+ * [Setuptools](https://setuptools.pypa.io/en/latest/) is historically the most common solution, and remains the reference to build [C extensions](https://setuptools.pypa.io/en/latest/userguide/ext_modules.html), which still require a `setup.py` file (cf. [is `setup.py` deprecated?](https://packaging.python.org/en/latest/discussions/setup-py-deprecated/)).
+ * [`uv_build`](https://docs.astral.sh/uv/concepts/build-backend/) is the default of `uv init`. It is fast and requires no configuration, but it does not support dynamic metadata (i.e., the version must be written in `pyproject.toml`), and its version constraint must be bumped along with `uv` releases.
 
 Note that no default license file is provided, as this template does not necessarily targets open source projects.
 By default, copyright applies; [choose a license](https://choosealicense.com/) if you would like to open your project!
