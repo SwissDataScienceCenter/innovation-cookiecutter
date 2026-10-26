@@ -27,7 +27,7 @@ You can now create an empty repository on GitHub or GitLab (i.e., without an ini
 ```sh
 cd your-project
 git init --initial-branch=main
-git remote add origin https://github.com/you/your-project.git
+git remote add origin git@github.com:you/your-project.git
 git add .
 git commit -m "Initial commit"
 git push --set-upstream origin main
